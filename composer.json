@@ -7,8 +7,14 @@
             "email": "alexsorribes@e-ports.eu"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "php": ">=7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Axsor\\": "src/"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [

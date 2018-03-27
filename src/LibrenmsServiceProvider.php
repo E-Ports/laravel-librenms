@@ -1,6 +1,5 @@
 <?php
 
-//namespace App\Providers;
 namespace Axsor\LaravelLibrenms;
 
 use Illuminate\Support\Facades\Log;
@@ -15,7 +14,7 @@ class LibrenmsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Log::info('prova inici librenms');
+        Log::info('Hola');
     }
 
     /**
