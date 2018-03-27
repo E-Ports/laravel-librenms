@@ -1,0 +1,19 @@
+{
+    "name": "axsor/laravel-librenms",
+    "description": "LibreNMS connection package",
+    "authors": [
+        {
+            "name": "alex",
+            "email": "alexsorribes@e-ports.eu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Axsor\\LaravelLibrenms\\LibrenmsServiceProvider"
+            ]
+        }
+    }
+}
