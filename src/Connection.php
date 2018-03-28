@@ -24,10 +24,12 @@ class Connection
     private $key;
 
     /**
+     * Client to send HTTP requests
      *
      * @var \GuzzleHttp\Client
      */
     private $client;
+
 
 
     public function __construct($connection = 'default')
@@ -43,7 +45,7 @@ class Connection
 
             $this->key = config("{$connectionConfigPath}key");
 
-            $this->client = new Client();
+            $this->client = new Client;
         }
     }
 
@@ -89,10 +91,10 @@ class Connection
      */
     private function request($method, $uri)
     {
-        return $this->client->$method($this->url . '/' . $uri, [
+        return json_decode($this->client->$method($this->url . '/' . $uri, [
             'headers' => [
                 'X-Auth-Token' => $this->key
             ]
-        ])->getBody()->getContents();
+        ])->getBody()->getContents(), true);
     }
 }

@@ -3,7 +3,7 @@
 namespace Axsor\LaravelLibreNMS;
 
 
-use Axsor\LaravelLibreNMS\Http\Controllers\Device;
+use Axsor\LaravelLibreNMS\Requests\DeviceRequest;
 use Illuminate\Support\Facades\Log;
 
 class LibreNMS
@@ -32,21 +32,21 @@ class LibreNMS
 
     public function devices()
     {
-        $device = new Device($this->connection);
+        $device = new DeviceRequest($this->connection);
 
         return $device->devices();
     }
 
     public function device($id)
     {
-        $device = new Device($this->connection);
+        $device = new DeviceRequest($this->connection);
 
         return $device->device($id);
     }
 
     public function deleteDevice($id)
     {
-        $device = new Device($this->connection);
+        $device = new DeviceRequest($this->connection);
 
         return $device->deleteDevice($id);
     }
