@@ -1,12 +1,17 @@
 <?php
 
-namespace Axsor\LaravelLibreNMS\Models;
+namespace Axsor\LaravelLibreNMS\ModelCollections;
 
 
+use Axsor\LaravelLibreNMS\Models\Device;
 use Illuminate\Support\Collection;
 
 class DeviceCollection extends Collection
 {
+    // Necessary attribute?
+    /**
+     * @var mixed Result of request
+     */
     public $status;
 
     /**

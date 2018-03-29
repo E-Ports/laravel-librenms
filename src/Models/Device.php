@@ -40,6 +40,8 @@ class Device extends Model
         'disabled',
         'uptime',
         'agent_uptime',
+        'lat',
+        'lng',
         'last_polled',
         'last_poll_attempted',
         'last_polled_timetaken',

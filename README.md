@@ -54,15 +54,20 @@ Finally, to use extra connection call `use()` method of `LibreNMS` and pass *ser
 
 
 ## Use
-The return is collection of models into a **specific** collection class.
+The return is laravel model. But in case of call methods returns list of objects, the result
+is a **Collection**.
 
 ```
-// Return all devices
+// Return all devices into collection
 LibreNMS::devices();
 
 // Return a device
-LNMS::device(22);
+LibreNMS::device(22);
+LibreNMS::device("localhost");
+
+// Return propierty of device using alternative connection
+LibreNMS::use('test')->device("localhost")->hostname;
 
 // Delete and return a device
-LNMS::deleteDevice(22);
+LibreNMS::deleteDevice(22);
 ```

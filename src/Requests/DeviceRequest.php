@@ -5,7 +5,7 @@ namespace Axsor\LaravelLibreNMS\Requests;
 
 use Axsor\LaravelLibreNMS\Connection;
 use Axsor\LaravelLibreNMS\Models\Device;
-use Axsor\LaravelLibreNMS\Models\DeviceCollection;
+use Axsor\LaravelLibreNMS\ModelCollections\DeviceCollection;
 
 class DeviceRequest
 {
@@ -25,6 +25,7 @@ class DeviceRequest
 
     /**
      * Return list of all devices
+     *
      * @return DeviceCollection
      */
     public function devices()
@@ -35,6 +36,7 @@ class DeviceRequest
 
     /**
      * Return single device
+     *
      * @param $device
      * @return Device
      */

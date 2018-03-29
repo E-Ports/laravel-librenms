@@ -4,6 +4,9 @@ namespace Axsor\LaravelLibreNMS;
 
 
 use Axsor\LaravelLibreNMS\Requests\DeviceRequest;
+use Axsor\LaravelLibreNMS\Requests\LocationRequest;
+use Axsor\LaravelLibreNMS\Requests\PortRequest;
+use Axsor\LaravelLibreNMS\Requests\ServiceRequest;
 use Illuminate\Support\Facades\Log;
 
 class LibreNMS
@@ -30,6 +33,14 @@ class LibreNMS
     }
 
 
+    /*
+     * #################################################################################################################
+     *
+     * #############################################          DEVICE         ###########################################
+     *
+     * #################################################################################################################
+     */
+
     public function devices()
     {
         $device = new DeviceRequest($this->connection);
@@ -52,13 +63,56 @@ class LibreNMS
     }
 
 
-    /**
-     * FUNCIÓ PER DESENVOLUPAR
-     * ELIMINAR UN COP ACABAT EL PAQUET
+    /*
+     * #################################################################################################################
+     *
+     * ############################################          SERVICE         ###########################################
+     *
+     * #################################################################################################################
      */
-    public function log()
+
+    public function services()
     {
-        Log::info('inicialitzat');
-        Log::info($this->connection->__toString());
+        $service = new ServiceRequest($this->connection);
+
+        return $service->services();
+    }
+
+
+    /*
+     * #################################################################################################################
+     *
+     * #############################################          PORT         #############################################
+     *
+     * #################################################################################################################
+     */
+
+    public function ports()
+    {
+        $port = new PortRequest($this->connection);
+
+        return $port->ports();
+    }
+
+    public function port($id)
+    {
+        $port = new PortRequest($this->connection);
+
+        return $port->port($id);
+    }
+
+
+    /*
+     * #################################################################################################################
+     *
+     * #############################################          PORT         #############################################
+     *
+     * #################################################################################################################
+     */
+    public function locations()
+    {
+        $location = new LocationRequest($this->connection);
+
+        return $location->locations();
     }
 }
