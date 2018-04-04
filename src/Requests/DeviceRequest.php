@@ -3,34 +3,20 @@
 namespace Axsor\LaravelLibreNMS\Requests;
 
 
-use Axsor\LaravelLibreNMS\Connection;
+use Axsor\LaravelLibreNMS\LibreNMS;
 use Axsor\LaravelLibreNMS\Models\Device;
 use Axsor\LaravelLibreNMS\ModelCollections\DeviceCollection;
 
 class DeviceRequest
 {
     /**
-     * @var Connection contains connection parameters
-     */
-    private $connection;
-
-
-    public function __construct(Connection $connection)
-    {
-        $this->connection = $connection;
-
-        return $this;
-    }
-
-
-    /**
      * Return list of all devices
      *
      * @return DeviceCollection
      */
-    public function devices()
+    public static function devices()
     {
-        return new DeviceCollection($this->connection->get('devices'));
+        return new DeviceCollection(LibreNMS::$connection->get('devices'));
     }
 
 
@@ -40,18 +26,19 @@ class DeviceRequest
      * @param $device
      * @return Device
      */
-    public function device($device)
+    public static function device($device)
     {
-        return new Device($this->connection->get("devices/{$device}")['devices'][0]);
+        return new Device(LibreNMS::$connection->get("devices/{$device}")['devices'][0]);
     }
 
 
     /**
+     * // TODO Not tested
      * @param $device
      * @return Device
      */
-    public function deleteDevice($device)
+    public static function deleteDevice($device)
     {
-        return new Device($this->connection->delete("devices/{$device}")['devices'][0]);
+        return new Device(LibreNMS::$connection->delete("devices/{$device}")['devices'][0]);
     }
 }

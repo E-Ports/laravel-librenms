@@ -11,7 +11,7 @@ return [
             /**
              * URL to access to LibreNMS server
              */
-            'url' => env('LIBRENMS_URL'),
+            'url' => env('LIBRENMS_API_URL'),
 
 
             /**
@@ -24,7 +24,7 @@ return [
          * Example of multiple connections:
          *
          * 'server2' => [
-         *     'url' => env('LIBRENMS_SERVER2_URL'),
+         *     'url' => env('LIBRENMS_SERVER2_API_URL'),
          *     'key' => env('LIBRENMS_SERVER2_API_KEY')
          * ]
          *

@@ -26,8 +26,8 @@ LIBRENMS_API_KEY="api key of librenms"
 First add the **url** and **key** for each extra LibreNMS server into `.env` file:
 
 ```
-LIBRENMS_SERVER2_URL="localhost:8000/api/v0"
-LIBRENMS_SERVER2_KEY="too_large_token_api_key1"
+LIBRENMS_SERVER2_API_URL="localhost:8000/api/v0"
+LIBRENMS_SERVER2_API_KEY="long_api_token_key1"
 ```
 
 Add into `config/librenms.php` new entry into connections array:
@@ -37,8 +37,8 @@ Add into `config/librenms.php` new entry into connections array:
     'default' => ...,
     
     'custom_server_2' => [
-        'url' => env('LIBRENMS_SERVER2_URL'),
-        'key' => env('LIBRENMS_SERVER2_KEY')
+        'url' => env('LIBRENMS_SERVER2_API_URL'),
+        'key' => env('LIBRENMS_SERVER2_API_KEY')
     ]
 ]
 ```
@@ -48,7 +48,7 @@ Finally, to use extra connection call `use()` method of `LibreNMS` and pass *ser
 `LibreNMS::use('custom_server_2')->devices();`
 
 
-* To call **LibreNMS**:
+* To call **LibreNMS facade**:
 
 `use Axsor\LaravelLibreNMS\LibreNMSFacade as LibreNMS;`
 
@@ -67,7 +67,4 @@ LibreNMS::device("localhost");
 
 // Return propierty of device using alternative connection
 LibreNMS::use('test')->device("localhost")->hostname;
-
-// Delete and return a device
-LibreNMS::deleteDevice(22);
 ```

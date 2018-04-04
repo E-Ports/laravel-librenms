@@ -1,34 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alex
- * Date: 29/03/18
- * Time: 17:03
- */
 
 namespace Axsor\LaravelLibreNMS\Requests;
 
 
-use Axsor\LaravelLibreNMS\Connection;
+use Axsor\LaravelLibreNMS\LibreNMS;
 use Axsor\LaravelLibreNMS\ModelCollections\LocationCollection;
 
 class LocationRequest
 {
     /**
-     * @var Connection contains connection parameters
+     * Return all locations
+     *
+     * @return LocationCollection
      */
-    private $connection;
-
-
-    public function __construct(Connection $connection)
+    public static function locations()
     {
-        $this->connection = $connection;
-
-        return $this;
-    }
-
-    public function locations()
-    {
-        return new LocationCollection($this->connection->get('resources/locations'));
+        return new LocationCollection(LibreNMS::$connection->get('resources/locations'));
     }
 }

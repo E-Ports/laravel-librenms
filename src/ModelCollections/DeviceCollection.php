@@ -8,10 +8,6 @@ use Illuminate\Support\Collection;
 
 class DeviceCollection extends Collection
 {
-    // Necessary attribute?
-    /**
-     * @var mixed Result of request
-     */
     public $status;
 
     /**

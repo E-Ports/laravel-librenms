@@ -3,37 +3,30 @@
 namespace Axsor\LaravelLibreNMS\Requests;
 
 
-use Axsor\LaravelLibreNMS\Connection;
+use Axsor\LaravelLibreNMS\LibreNMS;
 use Axsor\LaravelLibreNMS\Models\Port;
 use Axsor\LaravelLibreNMS\ModelCollections\PortCollection;
 
 class PortRequest
 {
     /**
-     * @var Connection contains connection parameters
+     * Return all ports
+     *
+     * @return PortCollection
      */
-    private $connection;
-
+    public static function ports()
+    {
+        return new PortCollection(LibreNMS::$connection->get('ports'));
+    }
 
     /**
-     * PortRequest constructor.
-     * @param Connection $connection
+     * Return single port
+     *
+     * @param $port
+     * @return Port
      */
-    public function __construct(Connection $connection)
+    public static function port($port)
     {
-        $this->connection = $connection;
-
-        return $this;
-    }
-
-
-    public function ports()
-    {
-        return new PortCollection($this->connection->get('ports'));
-    }
-
-    public function port($port)
-    {
-        return new Port($this->connection->get('ports/'.$port)['port'][0]);
+        return new Port(LibreNMS::$connection->get('ports/'.$port)['port'][0]);
     }
 }

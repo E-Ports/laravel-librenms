@@ -7,16 +7,14 @@ use Axsor\LaravelLibreNMS\Requests\DeviceRequest;
 use Axsor\LaravelLibreNMS\Requests\LocationRequest;
 use Axsor\LaravelLibreNMS\Requests\PortRequest;
 use Axsor\LaravelLibreNMS\Requests\ServiceRequest;
-use Illuminate\Support\Facades\Log;
 
 class LibreNMS
 {
-
-    protected $connection;
+    public static $connection;
 
     public function __construct()
     {
-        $this->connection = new Connection();
+        self::$connection = new Connection();
     }
 
     /**
@@ -27,7 +25,7 @@ class LibreNMS
      */
     public function use($connection)
     {
-        $this->connection = new Connection($connection);
+        self::$connection = new Connection($connection);
 
         return $this;
     }
@@ -35,84 +33,62 @@ class LibreNMS
 
     /*
      * #################################################################################################################
-     *
      * #############################################          DEVICE         ###########################################
-     *
      * #################################################################################################################
      */
 
-    public function devices()
+    public static function devices()
     {
-        $device = new DeviceRequest($this->connection);
-
-        return $device->devices();
+        return DeviceRequest::devices();
     }
 
-    public function device($id)
+    public static function device($id)
     {
-        $device = new DeviceRequest($this->connection);
-
-        return $device->device($id);
+        return DeviceRequest::device($id);
     }
 
-    public function deleteDevice($id)
+    public static function deleteDevice($id)
     {
-        $device = new DeviceRequest($this->connection);
-
-        return $device->deleteDevice($id);
+        return DeviceRequest::deleteDevice($id);
     }
 
 
     /*
      * #################################################################################################################
-     *
      * ############################################          SERVICE         ###########################################
-     *
      * #################################################################################################################
      */
 
-    public function services()
+    public static function services()
     {
-        $service = new ServiceRequest($this->connection);
-
-        return $service->services();
+        return ServiceRequest::services();
     }
 
 
     /*
      * #################################################################################################################
-     *
      * #############################################          PORT         #############################################
-     *
      * #################################################################################################################
      */
 
-    public function ports()
+    public static function ports()
     {
-        $port = new PortRequest($this->connection);
-
-        return $port->ports();
+        return PortRequest::ports();
     }
 
-    public function port($id)
+    public static function port($id)
     {
-        $port = new PortRequest($this->connection);
-
-        return $port->port($id);
+        return PortRequest::port($id);
     }
 
 
     /*
      * #################################################################################################################
-     *
-     * #############################################          PORT         #############################################
-     *
+     * ##########################################          LOCATIONS         ###########################################
      * #################################################################################################################
      */
-    public function locations()
+    public static function locations()
     {
-        $location = new LocationRequest($this->connection);
-
-        return $location->locations();
+        return LocationRequest::locations();
     }
 }
