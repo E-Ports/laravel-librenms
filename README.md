@@ -72,3 +72,17 @@ LibreNMS::device("localhost");
 // Return propierty of device using alternative connection
 LibreNMS::use('test')->device("localhost")->hostname;
 ```
+
+## Testing
+When you want to use different connection to test can must change
+
+`'different_connection_on_test' => false` to `'different_connection_on_test' => true`
+
+on **config/librenms.php** config file. And create env variables like:
+
+```
+LIBRENMS_API_URL_TEST=localhost/api/v0
+LIBRENMS_API_KEY_TEST=0a5355cb6126c6a890df5924342b24e0
+```
+
+On test execution the LibreNMS connection that will be used is `testing` (on librenms config file).

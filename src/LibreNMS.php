@@ -14,7 +14,11 @@ class LibreNMS
 
     public function __construct()
     {
-        self::$connection = new Connection();
+        if (config('librenms.different_connection_on_test') && config('app.env') == 'testing')
+        {
+            self::$connection = new Connection('testing');
+        }
+        else self::$connection = new Connection();
     }
 
     /**
