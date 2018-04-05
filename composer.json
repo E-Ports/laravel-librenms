@@ -25,5 +25,8 @@
                 "LibreNMS": "Axsor\\LaravelLibreNMS\\LibreNMSFacade"
             }
         }
-    }
+    },
+    "license": [
+        "GPL-3.0-or-later"
+    ]
 }

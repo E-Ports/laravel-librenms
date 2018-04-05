@@ -3,7 +3,11 @@
 
 ## Installation
 
-* Configure **`LibreNMS`**:
+`composer require axsor/laravel-librenms`
+
+## Configuration
+
+* Publish LibreNMS config file:
 
 `php artisan vendor:publish` -> and select **Axsor\LaravelLibreNMS\LibreNMSServiceProvider**
 
@@ -21,7 +25,7 @@ LIBRENMS_API_URL="protocol + hostname/ip + '/api/v0'"
 LIBRENMS_API_KEY="api key of librenms"
 ```
 
-* More than one LibreNMS server:
+* Configure more than one LibreNMS server:
 
 First add the **url** and **key** for each extra LibreNMS server into `.env` file:
 

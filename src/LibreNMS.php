@@ -52,6 +52,7 @@ class LibreNMS
         return DeviceRequest::deleteDevice($id);
     }
 
+    // TODO add resting device funcionalities
 
     /*
      * #################################################################################################################
@@ -64,6 +65,7 @@ class LibreNMS
         return ServiceRequest::services();
     }
 
+    // TODO add resting service funcionalities
 
     /*
      * #################################################################################################################
@@ -81,6 +83,7 @@ class LibreNMS
         return PortRequest::port($id);
     }
 
+    // TODO add resting port funcionalities
 
     /*
      * #################################################################################################################
@@ -91,4 +94,6 @@ class LibreNMS
     {
         return LocationRequest::locations();
     }
+
+    // TODO add 'alert', 'routing', 'switching', 'inventory', 'bill', 'arp' and 'log' funcionalities
 }
