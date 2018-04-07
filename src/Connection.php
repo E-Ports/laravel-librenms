@@ -61,14 +61,14 @@ class Connection
         return $this->request('head', $uri);
     }
 
-    public function post($uri)
+    public function post($uri, $data)
     {
-        return $this->request('post', $uri);
+        return $this->request('post', $uri, $data);
     }
 
-    public function put($uri)
+    public function put($uri, $data)
     {
-        return $this->request('put', $uri);
+        return $this->request('put', $uri, $data);
     }
 
     public function delete($uri)
@@ -76,25 +76,27 @@ class Connection
         return $this->request('delete', $uri);
     }
 
-    public function patch($uri)
+    public function patch($uri, $data)
     {
-        return $this->request('patch', $uri);
+        return $this->request('patch', $uri, $data);
     }
 
 
     /**
      * Send request to LibreNMS server
      *
-     * @param $method
-     * @param $uri
+     * @param $method ['get', 'head', 'post', 'put', 'delete', 'patch']
+     * @param $uri String path added to base url
+     * @param array $payload data to post/put/patch
      * @return mixed
      */
-    private function request($method, $uri)
+    private function request($method, $uri, $payload = [])
     {
         return json_decode($this->client->$method($this->url . '/' . $uri, [
             'headers' => [
                 'X-Auth-Token' => $this->key
-            ]
+            ],
+            'json' => $payload
         ])->getBody()->getContents(), true);
     }
 }

@@ -3,10 +3,16 @@
 namespace Axsor\LaravelLibreNMS\Models;
 
 
+use Axsor\LaravelLibreNMS\Requests\PortRequest;
 use Illuminate\Database\Eloquent\Model;
 
 class Port extends Model
 {
+    public function getIp()
+    {
+        return PortRequest::getIp($this->port_id);
+    }
+
     protected $fillable = [
         "port_id",
         "device_id",

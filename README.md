@@ -5,6 +5,10 @@
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Usage](#usage)
+    * [Device](#device)
+    * [Port](#port)
+    * [Service](#service)
+    * [Location](#location)
 * [Testing](#testing)
 
 ## Installation
@@ -74,19 +78,51 @@ Finally, to use extra connection call `use()` method of `LibreNMS` and pass *ser
 
 
 ## Usage
-The return is laravel model. But in case of call methods returns list of objects, the result
-is a **Collection**.
+The return is **laravel model**. But in case of call methods returns list of objects, the result
+is a **Collection** of laravel models.
 
+**Actually only supports IPv4**.
+
+### Device
 ```
-// Return all devices into collection
+// Get all devices into collection
 LibreNMS::devices();
 
-// Return a device
+// Get a device
 LibreNMS::device(22);
 LibreNMS::device("localhost");
 
-// Return propierty of device using alternative connection
+// Get propierty of device using alternative connection
 LibreNMS::use('test')->device("localhost")->hostname;
+
+// Get all IPs from a device into collection
+LibreNMS::getDeviceIps("localhost");
+LibreNMS::device(22)->getIps(); // It can be executed from Device model
+```
+
+### Port
+```
+// Get all ports into collection
+LibreNMS::ports();
+
+// Get a port
+LibreNMS::port(22);
+
+// Get IP from port
+LibreNMS::port(22)->getIp();
+LibreNMS::getPortIp(22);
+```
+
+### Service
+```
+// Get all services
+LibreNMS::services();
+```
+
+### Location
+```
+// Get all locations
+LibreNMS::locations();
 ```
 
 ## Testing
@@ -98,5 +134,5 @@ $this->app->bind('librenms', function () {
             $lnms = new \Axsor\LaravelLibreNMS\LibreNMS;
             $lnms->use('testing_connection_name');
             return $lnms;
-        });
+});
 ```

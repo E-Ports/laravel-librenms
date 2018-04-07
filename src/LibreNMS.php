@@ -52,6 +52,21 @@ class LibreNMS
         return DeviceRequest::deleteDevice($id);
     }
 
+    public static function addDevice($data)
+    {
+        return DeviceRequest::addDevice($data);
+    }
+
+    public static function getDeviceIps($device)
+    {
+        return DeviceRequest::getIps($device);
+    }
+
+    public static function getDevicePorts($device)
+    {
+        return DeviceRequest::getPorts($device);
+    }
+
     // TODO add resting device funcionalities
 
     /*
@@ -81,6 +96,11 @@ class LibreNMS
     public static function port($id)
     {
         return PortRequest::port($id);
+    }
+
+    public static function getPortIp($port)
+    {
+        return PortRequest::getIp($port);
     }
 
     // TODO add resting port funcionalities

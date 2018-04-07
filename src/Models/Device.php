@@ -2,11 +2,23 @@
 
 namespace Axsor\LaravelLibreNMS\Models;
 
+use Axsor\LaravelLibreNMS\Requests\DeviceRequest;
 use Illuminate\Database\Eloquent\Model;
 
 
 class Device extends Model
 {
+
+    public function getIps()
+    {
+        return DeviceRequest::getIps($this->device_id);
+    }
+
+    public function getPorts()
+    {
+        return DeviceRequest::getPorts($this->device_id);
+    }
+
     protected $fillable = [
         'device_id',
         'hostname',
