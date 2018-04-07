@@ -1,8 +1,26 @@
 # laravel-librenms
 > Aims to be driver between Laravel and LibreNMS server
 
+## Index
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [Usage](#usage)
+* [Testing](#testing)
+
 ## Installation
-`composer require axsor/laravel-librenms`
+```
+composer require axsor/laravel-librenms
+```
+
+For versions under laravel 5.5 must add the next line on `config/app.php` into **providers array**:
+```
+Axsor\LaravelLibreNMS\LibreNMSServiceProvider::class,
+```
+
+**Until there is not stable version of the package, must add the next line on `package.json` of laravel**
+```
+"minimum-stability": "dev"
+```
 
 ## Configuration
 * Publish LibreNMS config file:
@@ -55,7 +73,7 @@ Finally, to use extra connection call `use()` method of `LibreNMS` and pass *ser
 `use Axsor\LaravelLibreNMS\LibreNMSFacade as LibreNMS;`
 
 
-## Use
+## Usage
 The return is laravel model. But in case of call methods returns list of objects, the result
 is a **Collection**.
 
