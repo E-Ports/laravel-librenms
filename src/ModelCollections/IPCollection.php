@@ -3,6 +3,7 @@
 namespace Axsor\LaravelLibreNMS\ModelCollections;
 
 use Axsor\LaravelLibreNMS\Models\IPv4;
+use Axsor\LaravelLibreNMS\Models\IPv6;
 use Illuminate\Support\Collection;
 
 class IPCollection extends Collection
@@ -27,6 +28,7 @@ class IPCollection extends Collection
             {
                 $this->push(new IPv4($ip));
             }
+            else $this->push(new IPv6($ip));
         }
     }
 }

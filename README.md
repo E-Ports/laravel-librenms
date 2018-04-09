@@ -81,7 +81,7 @@ Finally, to use extra connection call `use()` method of `LibreNMS` and pass *ser
 The return is **laravel model**. But in case of call methods returns list of objects, the result
 is a **Collection** of laravel models.
 
-**Actually only supports IPv4**.
+**IPv6 is not tested**.
 
 ### Device
 ```
@@ -131,8 +131,8 @@ file and bind laravel container using specific connection:
 
 ```
 $this->app->bind('librenms', function () {
-            $lnms = new \Axsor\LaravelLibreNMS\LibreNMS;
-            $lnms->use('testing_connection_name');
-            return $lnms;
+    $lnms = new \Axsor\LaravelLibreNMS\LibreNMS;
+    $lnms->use('testing_connection_name');
+    return $lnms;
 });
 ```

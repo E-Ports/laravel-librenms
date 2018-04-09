@@ -5,6 +5,7 @@ namespace Axsor\LaravelLibreNMS\Requests;
 
 use Axsor\LaravelLibreNMS\LibreNMS;
 use Axsor\LaravelLibreNMS\Models\IPv4;
+use Axsor\LaravelLibreNMS\Models\IPv6;
 use Axsor\LaravelLibreNMS\Models\Port;
 use Axsor\LaravelLibreNMS\ModelCollections\PortCollection;
 
@@ -32,10 +33,10 @@ class PortRequest
     }
 
     /**
-     * Return IPv4 model
+     * Return IPv4/IPv6 model
      *
      * @param $port
-     * @return IPv4|null
+     * @return IPv4|IPv6
      */
     public static function getIp($port)
     {
@@ -45,7 +46,6 @@ class PortRequest
         {
             return new IPv4($ip);
         }
-        // TODO add IPv6 support
-        else return null;
+        else return new IPv6($ip);
     }
 }
