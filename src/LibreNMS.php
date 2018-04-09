@@ -3,6 +3,7 @@
 namespace Axsor\LaravelLibreNMS;
 
 
+use Axsor\LaravelLibreNMS\Requests\AlertRequest;
 use Axsor\LaravelLibreNMS\Requests\DeviceRequest;
 use Axsor\LaravelLibreNMS\Requests\LocationRequest;
 use Axsor\LaravelLibreNMS\Requests\PortRequest;
@@ -113,6 +114,22 @@ class LibreNMS
     public static function locations()
     {
         return LocationRequest::locations();
+    }
+
+    /*
+     * #################################################################################################################
+     * ############################################          ALERT         #############################################
+     * #################################################################################################################
+     */
+
+    public static function alerts()
+    {
+        return AlertRequest::alerts();
+    }
+
+    public static function alert($id)
+    {
+        return AlertRequest::alert($id);
     }
 
     // TODO add 'alert', 'routing', 'switching', 'inventory', 'bill', 'arp' and 'log' funcionalities

@@ -7,6 +7,7 @@
 * [Usage](#usage)
     * [Device](#device)
     * [Port](#port)
+    * [Alert](#alert)
     * [Service](#service)
     * [Location](#location)
 * [Testing](#testing)
@@ -111,6 +112,15 @@ LibreNMS::port(22);
 // Get IP from port
 LibreNMS::port(22)->getIp();
 LibreNMS::getPortIp(22);
+```
+
+### Alert
+```
+// Get all alerts - NOT TESTED
+LibreNMS::alerts();
+
+// Get an alert
+LibreNMS::alert(22);
 ```
 
 ### Service

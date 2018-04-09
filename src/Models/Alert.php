@@ -5,13 +5,17 @@ namespace Axsor\LaravelLibreNMS\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Location extends Model
+class Alert extends Model
 {
+
     protected $fillable = [
+        "hostname",
         "id",
-        "location",
-        "lat",
-        "lng",
+        "device_id",
+        "rule_id",
+        "state",
+        "alerted",
+        "open",
         "timestamp",
     ];
 }
