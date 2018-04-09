@@ -116,7 +116,7 @@ LibreNMS::getPortIp(22);
 
 ### Alert
 ```
-// Get all alerts - NOT TESTED
+// Get all alerts
 LibreNMS::alerts();
 
 // Get an alert
